@@ -1,9 +1,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
+COPY JobTrackrAPI/JobTrackrAPI.csproj JobTrackrAPI/
+RUN dotnet restore JobTrackrAPI/JobTrackrAPI.csproj
 COPY . .
 RUN dotnet publish JobTrackrAPI/JobTrackrAPI.csproj -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["sh", "-c", "ASPNETCORE_URLS=http://+:$PORT dotnet JobTrackrAPI.dll"]
+USER $APP_UID
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "JobTrackrAPI.dll"]

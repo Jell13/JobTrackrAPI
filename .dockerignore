@@ -1,4 +1,11 @@
 **/bin/
 **/obj/
-.git
 .env.docker
+.git/
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/Dockerfile*
+**/.dockerignore
+.env.local-docker
