@@ -4,6 +4,8 @@
 GET {{JobTrackrAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
+###
+
 POST {{Docker}}/api/auth/refresh
 Content-Type: application/json
 
