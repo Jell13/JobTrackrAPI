@@ -10,5 +10,7 @@ namespace JobTrackrAPI.Data
         public DbSet<Application> Applications { get; set; }
         public DbSet<AppUser> Users { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        public DbSet<EmployerSponsorshipStat> EmployerSponsorshipStats { get; set; }
     }
 }

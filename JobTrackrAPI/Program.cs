@@ -1,6 +1,7 @@
 using JobTrackrAPI.Data;
-using Microsoft.EntityFrameworkCore;
+using JobTrackrAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -27,6 +28,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SigningKey"]!))
         };
     });
+
+builder.Services.AddScoped<SponsorshipService>();
 
 builder.Services.AddAuthorization();
 
